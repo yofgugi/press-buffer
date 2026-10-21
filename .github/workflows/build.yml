@@ -1,0 +1,27 @@
+name: Build Windows Mod
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build for Geometry Dash 2.2081
+        uses: geode-sdk/build-geode-mod@main
+        id: build
+        with:
+          sdk: v5.11.2
+          bindings-ref: 13436953582c8bfa6d7a91392c9f575d5bafec83
+          configure-args: -DSKIP_BUILDING_CODEGEN=OFF
+          target: Win64
+          build-config: Release
+      - name: Upload installable mod
+        uses: actions/upload-artifact@v4
+        with:
+          name: input-buffer-windows
+          path: ${{ steps.build.outputs.build-output }}/*.geode
+          if-no-files-found: error
