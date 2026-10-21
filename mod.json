@@ -1,0 +1,22 @@
+{
+	"geode": "5.11.2",
+	"gd": { "win": "2.2081" },
+	"version": "v0.1.0",
+	"id": "anthony.press-buffer",
+	"name": "Press Buffer",
+	"developer": "Anthony",
+	"description": "Practice tool: buffers early jump presses (step 1: queue + HUD, prediction not yet implemented).",
+	"settings": {
+		"enabled": {
+			"type": "bool",
+			"name": "Enabled",
+			"default": true
+		},
+		"force-delay-debug": {
+			"type": "bool",
+			"name": "DEBUG: always delay every press by the full window",
+			"description": "Only for checking that the queue works. Leave OFF for normal play.",
+			"default": false
+		}
+	}
+}
